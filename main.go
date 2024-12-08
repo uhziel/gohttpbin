@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"net/http"
+	"os"
 )
 
 func main() {
@@ -11,7 +12,13 @@ func main() {
 	flag.Parse()
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("hello"))
+		host, err := os.Hostname()
+		if err != nil {
+			fmt.Fprintf(w, "%s", err.Error())
+			return
+		}
+
+		w.Write([]byte(host))
 	})
 
 	addr := fmt.Sprintf(":%s", *port)
