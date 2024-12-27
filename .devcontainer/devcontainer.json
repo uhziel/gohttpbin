@@ -11,15 +11,17 @@
 			"moby": "true"
 		},
 		"ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
-			"version": "latest",
-			"helm": "latest",
-			"minikube": "none"
+			"version": "1.28.3",
+			"helm": "3.9.2",
+			"minikube": "none" // v1.32.0
 		},
 		"./local-features/copy-kube-config": {},
 		"ghcr.io/devcontainers/features/go:1": {
 			"version": "1.22"
 		},
-		"ghcr.io/rio/features/skaffold:2": {}
+		"ghcr.io/rio/features/skaffold:2": {
+			"version": "2.13.2"
+		}
 	},
 
 	"remoteEnv": {
