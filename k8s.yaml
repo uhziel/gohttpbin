@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gohttpbin
+  labels:
+    app: gohttpbin
+spec:
+  selector:
+    matchLabels:
+      app: gohttpbin
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: gohttpbin
+        version: v1
+    spec:
+      containers:
+      - name: gohttpbin
+        image: uhziel/gohttpbin:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gohttpbin
+  labels:
+    app: gohttpbin
+spec:
+  type: ClusterIP
+  ports:
+  - name: gohttpbin
+    port: 80
+    protocol: TCP
+    targetPort: 6000
+  selector:
+    app: gohttpbin
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gohttpbin
+spec:
+  rules:
+  - host: gohttpbin.192.168.49.2.nip.io
+    http:
+      paths:
+      - backend:
+          service:
+            name: gohttpbin
+            port:
+              number: 80
+        path: /
+        pathType: Prefix

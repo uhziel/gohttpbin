@@ -1,6 +1,6 @@
 all: build push
 
-IMG ?= uhziel/gohttpbin
+IMG ?= uhziel/gohttpbin:latest
 
 .PHONY: build
 build:
