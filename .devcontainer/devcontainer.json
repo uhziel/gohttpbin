@@ -30,6 +30,11 @@
 	"initializeCommand": "cd .devcontainer && bash ensure-mount-sources",
 	"mounts": [
 		{
+			"source": "${env:HOME}/.minikube/cache",
+			"target": "/root/.minikube/cache",
+			"type": "bind"
+		},
+		{
 			"source": "${env:HOME}${env:USERPROFILE}/.kube",
 			"target": "/usr/local/share/kube-localhost",
 			"type": "bind"
