@@ -5,8 +5,9 @@ metadata:
 build:
   artifacts:
     - image: uhziel/gohttpbin
-      docker:
-        dockerfile: Dockerfile
+      ko: {}
+      #docker:
+      #  dockerfile: Dockerfile
 manifests:
   rawYaml:
     - k8s.yaml
