@@ -6,6 +6,11 @@
 	"image": "buildpack-deps:bullseye-scm",
 	"features": {
 		// "./local-features/copy-kube-config": {},
+		"ghcr.io/devcontainers/features/common-utils:2": {
+			"installZsh": "false",
+			"installOhMyZsh": "false",
+			"installOhMyZshConfig": "false"
+		},
 		"ghcr.io/devcontainers/features/docker-in-docker:2": {
 			"moby": "true"
 		},
@@ -31,17 +36,12 @@
 	"remoteEnv": {
 		"SYNC_LOCALHOST_KUBECONFIG": "true"
 	},
-	"initializeCommand": "cd .devcontainer && bash ensure-mount-sources",
+	//"initializeCommand": "cd .devcontainer && bash ensure-mount-sources",
 	"mounts": [
 		{
-			"source": "${env:HOME}/.minikube/cache",
-			"target": "/root/.minikube/cache",
-			"type": "bind"
-		},
-		{
-			"source": "${env:HOME}${env:USERPROFILE}/.kube",
-			"target": "/usr/local/share/kube-localhost",
-			"type": "bind"
+			"source": "go-${devcontainerId}",
+			"target": "/go",
+			"type": "volume"
 		},
 		// Optional mount to also sync certs in your .minikube folder
 		{
