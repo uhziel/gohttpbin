@@ -33,6 +33,9 @@
 			]
 		}
 	},
+	"containerEnv": {
+		"GOPROXY": "https://goproxy.cn,direct"
+	},
 	"remoteEnv": {
 		"SYNC_LOCALHOST_KUBECONFIG": "true"
 	},
