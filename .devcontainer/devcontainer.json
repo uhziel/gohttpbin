@@ -4,7 +4,6 @@
 	"name": "Kubernetes - Local Configuration",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"image": "buildpack-deps:bullseye-scm",
-
 	"features": {
 		// "./local-features/copy-kube-config": {},
 		"ghcr.io/devcontainers/features/docker-in-docker:2": {
@@ -22,11 +21,16 @@
 			"version": "2.13.2"
 		}
 	},
-
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"-ms-azuretools.vscode-docker"
+			]
+		}
+	},
 	"remoteEnv": {
 		"SYNC_LOCALHOST_KUBECONFIG": "true"
 	},
-
 	"initializeCommand": "cd .devcontainer && bash ensure-mount-sources",
 	"mounts": [
 		{
@@ -46,16 +50,12 @@
 			"type": "bind"
 		}
 	]
-
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
-
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "kubectl version",
-
 	// Configure tool-specific properties.
 	// "customizations": {},
-
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
 }
