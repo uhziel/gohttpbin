@@ -3,7 +3,7 @@
 {
 	"name": "Kubernetes - Local Configuration",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "buildpack-deps:bullseye-scm",
+	"build": { "dockerfile": "Dockerfile" },
 	"features": {
 		// "./local-features/copy-kube-config": {},
 		"ghcr.io/devcontainers/features/common-utils:2": {
